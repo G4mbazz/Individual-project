@@ -4,8 +4,10 @@ namespace Individual_project
 {
     internal class Program
     {
+        //Sebastian SUT22
         static void Main(string[] args)
         {
+            //Jagged array for all the bank accounts
             decimal[][] account = new decimal[][]
             {
                 new decimal []{ 6758, 214230, 5000 },
@@ -16,6 +18,7 @@ namespace Individual_project
             };
             Login(account);
         }
+        //Method for viewing account details
         public static void AccountInfo(int index, decimal[][] account)
         {
             Console.Clear();
@@ -33,6 +36,7 @@ namespace Individual_project
                 ReturnToMainMenu();
             }
         }
+        //Method for transfering money between users accounts
         public static void Transfer(decimal[][] account, int index)
         {
 
@@ -76,10 +80,10 @@ namespace Individual_project
                             else
                             {
                                 account[index][accountChoiseTwo] += amount;
-                                account[index][accountChoise] = Math.Round(account[index][accountChoiseTwo], 2, MidpointRounding.ToEven);
+                                account[index][accountChoiseTwo] = Math.Round(account[index][accountChoiseTwo], 2, MidpointRounding.ToEven);
                                 account[index][accountChoise] -= amount;
                                 account[index][accountChoise] = Math.Round(account[index][accountChoise], 2, MidpointRounding.ToEven);
-                                Console.WriteLine("Ditt nya saldo: {0}Kr", account[index][accountChoise]);
+                                Console.WriteLine($"Dina nya saldon: \nKonto Nr{accountChoise+1}: {account[index][accountChoise]}Kr \nKonto Nr{accountChoiseTwo + 1}: {account[index][accountChoiseTwo]}Kr");
                                 loop = false;
                                 transferLoop = false;
                                 ReturnToMainMenu();
@@ -97,6 +101,7 @@ namespace Individual_project
                 }
             }
         }
+        //Method for withdrawing money
         public static void Withdrawal(decimal[][] account, int index, string pin)
         {
             bool withdrawLoop = true;
@@ -159,6 +164,7 @@ namespace Individual_project
                 }
             }
         }
+        //Main Menu Method for navigating most of our methods
         public static void MainMenu(string user, decimal[][] account, int i, string pin)
         {
             bool loop = true;
@@ -190,7 +196,7 @@ namespace Individual_project
                 }
             }
         }
-
+        //Login that lets the user try to login 3 times before the app closes
         public static void Login(decimal[][] account)
         {
             string[,] user = new string[,] { { "Andreas", "3695" }, { "Sebastian", "1569" }, { "Casper", "5170" }, { "Johan", "5784" }, { "Kalle", "3459" } };
@@ -221,6 +227,7 @@ namespace Individual_project
                 counter++;
             }
         }
+        //Method used for buffering before returning to main menu
         public static void ReturnToMainMenu()
         {
             Console.WriteLine("Tryck på enter för att återgå till Menyn!");
